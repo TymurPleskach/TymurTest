@@ -1,4 +1,3 @@
-
 from selenium import webdriver
 from selenium.webdriver.support.color import Color
 
@@ -8,6 +7,7 @@ class NetpeakTest(object):
         self.driver = driver
 
     def test_1(self):
+        # --------------------------------------------------------------------------------------------------------
         print('1. Follow the link to the main page of the Netpeak website:')
         try:
             self.driver.get('https://netpeak.ua/')
@@ -17,6 +17,7 @@ class NetpeakTest(object):
             print(err)
             return
 
+        # --------------------------------------------------------------------------------------------------------
         print('')
         print('2. Click on the button "О нас":')
         try:
@@ -38,6 +39,7 @@ class NetpeakTest(object):
             print(err)
             return
 
+        # --------------------------------------------------------------------------------------------------------
         print('')
         print('3. Press the button "Стать частью команды":')
         window_0 = self.driver.window_handles[0]
@@ -46,6 +48,8 @@ class NetpeakTest(object):
                                               'div/div/div[2]/div/div[2]/ul/li[4]/a').click()
 
             print('--- С конпкой "Стать частью команды" не справился, здесь вместо неё нажимается "Карьера" ---')
+            print('--- Пробовал множеством способов, хотел и по координатам нажание сымитировать.  ---')
+            print('--- Ссылку получается вытянуть из неё, а кликнуть никак  ---')
             print('— Success —')
         except Exception as err:
             print('Fail')
@@ -67,6 +71,7 @@ class NetpeakTest(object):
             print(err)
             return
 
+        # --------------------------------------------------------------------------------------------------------
         print('')
         print('4. Verify that the page has a button "Я хочу работать в Netpeak" and and it is clickable:')
         try:
@@ -83,6 +88,7 @@ class NetpeakTest(object):
             print(err)
             return
 
+        # --------------------------------------------------------------------------------------------------------
         print('')
         print('5. Return to the previous tab and click the "Личный кабинет" button:')
         self.driver.switch_to.window(window_0)
@@ -98,6 +104,7 @@ class NetpeakTest(object):
         window_2 = self.driver.window_handles[2]
         self.driver.switch_to.window(window_2)
 
+        # --------------------------------------------------------------------------------------------------------
         print('')
         print('6. On the personal account page, fill the Login and Password with random data:')
         try:
@@ -111,6 +118,7 @@ class NetpeakTest(object):
             print(err)
             return
 
+        # --------------------------------------------------------------------------------------------------------
         print('')
         print('7. Verify that the "Login" button is not available:')
         try:
@@ -125,6 +133,7 @@ class NetpeakTest(object):
             print(err)
             return
 
+        # --------------------------------------------------------------------------------------------------------
         print('')
         print('8. Mark the checkbox "Авторизируясь, вы соглашаетесь с Политикой конфиденциальности":')
         try:
@@ -136,6 +145,7 @@ class NetpeakTest(object):
             print(err)
             return
 
+        # --------------------------------------------------------------------------------------------------------
         print('')
         print('9. Click on the enter button:')
         try:
@@ -159,6 +169,7 @@ class NetpeakTest(object):
             print(err)
             return
 
+        # --------------------------------------------------------------------------------------------------------
         print('')
         print('10. Verify that the Login and Password are highlighted in red:')
         try:
@@ -173,17 +184,17 @@ class NetpeakTest(object):
             print('Fail')
             print(err)
             return
+        # --------------------------------------------------------------------------------------------------------
+        # --------------------------------------------------------------------------------------------------------
 
 
 def main():
     driver = webdriver.Chrome(executable_path=r'chromedriver.exe')
     driver.implicitly_wait(5)
-    parser = NetpeakTest(driver)
-    parser.test_1()
+    tester = NetpeakTest(driver)
+    tester.test_1()
     driver.quit()
 
 
 if __name__ == '__main__':
     main()
-
-
